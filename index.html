@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FFXIV Gear Set Planner</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>FFXIV Gear Set Planner</h1>
+    <p class="tagline">Slot-by-slot planning, meld budget math, and shopping lists &mdash; all saved in your browser.</p>
+    <div class="topbar">
+      <label for="job-select">Job</label>
+      <select id="job-select"></select>
+      <input id="new-job-name" type="text" placeholder="New job name&hellip;" aria-label="New job name">
+      <button id="btn-new-job" type="button">Add Job</button>
+      <button id="btn-delete-job" type="button">Delete Job</button>
+      <span class="spacer"></span>
+      <button id="btn-add-pld" type="button">Add Sample PLD Set</button>
+      <button id="btn-export-shopping" type="button" class="primary">Export Shopping List (CSV)</button>
+      <button id="btn-export-full" type="button">Export Full Set (CSV)</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="targets" class="panel">
+      <h2>Targets &amp; Budget</h2>
+      <div class="grid-row">
+        <div>
+          <label for="ilvl-target">ILVL target</label>
+          <input id="ilvl-target" type="number" min="0" step="1">
+        </div>
+        <div>
+          <label for="budget-cap">Materia gil budget</label>
+          <input id="budget-cap" type="number" min="0" step="1000">
+        </div>
+      </div>
+      <label for="set-notes">Notes (stat goals, BiS plans&hellip;)</label>
+      <textarea id="set-notes" rows="3"></textarea>
+      <h3>Stat goals (compared to planned meld totals)</h3>
+      <div id="stat-goals" class="stat-goals"></div>
+    </section>
+
+    <section id="pieces" class="panel">
+      <h2>Gear Pieces</h2>
+      <p class="hint">Mark a piece as <strong>owned</strong> to keep it off the shopping list. Source tags are anything you track: hunt, raid, crafted, etc.</p>
+      <div id="piece-list"></div>
+    </section>
+
+    <section id="totals" class="panel">
+      <h2>Totals</h2>
+      <div id="totals-body"></div>
+      <div class="downloads">
+        <button id="btn-reset" type="button" class="danger">Clear This Job</button>
+        <button id="btn-export-full-2" type="button">Export Full Set (CSV)</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Local-first planner. Data lives in your browser's localStorage &mdash; nothing is uploaded. Tested offline from file://.</p>
+    <p>A <a href="https://dylanasdale.github.io">Asdale Dynamics, LLC</a> tool. MIT licensed &mdash; see <a href="LICENSE">LICENSE</a>.</p>
+  </footer>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="js/core.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
